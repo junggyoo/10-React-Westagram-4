@@ -1,10 +1,10 @@
-import React from 'react';
-import './Right.css';
+import React from "react";
+import "./Right.scss";
 
 class Right extends React.Component {
   render() {
     return (
-      <div>
+      <div className="Right">
         <div className="main-right">
           <div className="userMeta">
             <div className="userProfileImage">
