@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "./Login.css";
+import "./Login.scss";
 
 class Login extends React.Component {
   goToMain() {
@@ -8,10 +8,10 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="Login">
         <div className="loginBorder">
           <header className="loginLogo">
-            <img src="/logo_text.png" alt="" />
+            <img src="/images/junggyoo/logo_text.png" alt="" />
           </header>
           <section className="loginBox">
             <div className="loginId">

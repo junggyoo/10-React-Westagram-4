@@ -1,13 +1,13 @@
-import React from 'react';
-import './Feeds.css';
+import React from "react";
+import "./Feeds.scss";
 
 class Feeds extends React.Component {
   render() {
     return (
-      <div>
+      <div className="Feeds">
         <div className="feeds">
           <article className="feed">
-            <div className="feedHead">
+            <div className="feed-head">
               <div className="meta">
                 <div className="profileImage">
                   <img
