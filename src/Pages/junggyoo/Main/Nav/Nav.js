@@ -1,14 +1,14 @@
-import React from 'react';
-import './Nav.css';
+import React from "react";
+import "./Nav.scss";
 
 class Nav extends React.Component {
   render() {
     return (
-      <nav>
+      <nav className="Nav">
         <div className="navContainer">
           <div className="navLogo">
             <div className="navLogotext">
-              <img src="/logo_text.png" alt="imgText" />
+              <img src="/images/junggyoo/logo_text.png" alt="imgText" />
             </div>
           </div>
           <input type="text" className="navSearch" placeholder="검색" />
