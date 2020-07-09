@@ -1,12 +1,11 @@
 import React from "react";
 import "./Login.scss";
-// import logo_icon from "../../../../public/images/hyeonji/logo_text.png";
 import { withRouter } from "react-router-dom";
 
 class Login extends React.Component {
-  goToMain() {
+  goToMain = () => {
     this.props.history.push("/main-hyeonji");
-  }
+  };
   render() {
     return (
       <div className="Login">
@@ -27,7 +26,7 @@ class Login extends React.Component {
               className="box"
               placeholder="비밀번호"
             />
-            <button id="btn" className="box" onClick={this.goToMain.bind(this)}>
+            <button id="btn" className="box" onClick={this.goToMain}>
               로그인
             </button>
           </div>
