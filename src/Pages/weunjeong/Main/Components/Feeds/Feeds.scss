@@ -1,0 +1,209 @@
+// main내 공통
+article {
+  width: 614px;
+  border: 1px solid #e5e5e5;
+  background-color: #ffffff;
+  margin-bottom: 60px;
+
+  .article-header {
+    display: flex;
+    height: 72px;
+    position: relative;
+
+    .circle {
+      width: 80px;
+      height: 80px;
+      margin-left: -10px;
+      position: relative;
+
+      .profile {
+        width: 32px;
+        left: 40px;
+        top: 40px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+      }
+
+      svg {
+        fill: none;
+        stroke: #8a3ab9;
+        stroke-linecap: round;
+        stroke-width: 3;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 0;
+        animation: stroke-draw 6s ease-out infinite alternate;
+        animation: stroke-draw 6s cubic-bezier(0.77, 0, 0.175, 1) infinite
+          alternate;
+        enable-background: new -580 439 577.9 194;
+      }
+
+      @keyframes stroke-draw {
+        from {
+          stroke: #8a3ab9;
+          stroke-dasharray: 1;
+        }
+        to {
+          stroke: #cd486b;
+          transform: rotate(180deg);
+          stroke-dasharray: 8;
+        }
+      }
+    }
+
+    .article-name {
+      margin-top: 7px;
+
+      .header-id {
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 0px;
+      }
+
+      .header-location {
+        font-size: 12px;
+        margin-top: 6px;
+      }
+    }
+
+    .profile-dots {
+      width: 24px;
+      right: 20px;
+      top: 19px;
+      position: absolute;
+      cursor: pointer;
+    }
+  }
+
+  .article-pic {
+    width: 100%;
+  }
+
+  footer {
+    height: 40px;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+
+    .footer-left {
+      width: 130px;
+      height: 28px;
+      justify-content: space-evenly;
+      display: flex;
+
+      .article-heart,
+      .article-balloon,
+      .article-share {
+        width: 30px;
+        height: 28px;
+      }
+    }
+
+    .footer-right {
+      padding-right: 12px;
+
+      .article-bookmark {
+        width: 30px;
+        height: 28px;
+      }
+    }
+  }
+
+  .footer-text {
+    padding: 0px 16px;
+
+    .comment-bold {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .comment-regular {
+      font-size: 14px;
+    }
+
+    .comment-blue {
+      font-size: 14px;
+      color: #01376a;
+    }
+
+    .footer-btn {
+      font-weight: 500;
+      padding-top: 5px;
+      border: 1px solid transparent;
+      color: #8e8e8e;
+      background-color: #ffffff;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .hidden-comment {
+      display: none;
+    }
+
+    // hidden&shown-comment에 공통으로 적용
+    .comment-line {
+      display: flex;
+      justify-content: space-between;
+
+      .comment-id {
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      .comment-content {
+        font-size: 14px;
+      }
+
+      .line-right {
+        display: flex;
+        align-items: center;
+
+        .comment-delete {
+          width: 12px;
+        }
+
+        .comment-heart {
+          width: 15px;
+          margin-left: 6px;
+          float: right;
+        }
+      }
+    }
+  }
+
+  .write-comment {
+    width: 600px;
+    height: 56px;
+    margin-top: 4px;
+    padding: 0px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #e5e5e5;
+    border-width: 1px 0px 0px;
+
+    .write {
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .article-btn {
+      font-weight: 700;
+      color: #c0e0fd;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
