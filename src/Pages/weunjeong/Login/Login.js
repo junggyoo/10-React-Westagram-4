@@ -6,7 +6,26 @@ class WeunLoginBox extends React.Component {
   goToMain = () => {
     this.props.history.push("/main-weunjeong");
   };
+
+  constructor() {
+    super();
+    this.state = {
+      id: "",
+      password: "",
+    };
+  }
+
+  handleIdChange = (e) => {
+    this.setState({ id: e.target.value });
+  };
+
+  handlePasswordChange = (e) => {
+    this.setState({ password: e.target.value });
+  };
+
   render() {
+    const activateBtn =
+      this.state.id.length !== 0 && this.state.password.length !== 0;
     return (
       <div className="login-box">
         <div className="login-logo">
@@ -17,12 +36,24 @@ class WeunLoginBox extends React.Component {
             id="id"
             type="text"
             placeholder="Phone number, username, or email"
+            value={this.state.id}
+            onChange={this.handleIdChange}
           />
           <div className="pw-container">
-            <input id="pw" type="password" placeholder="Password" />
+            <input
+              id="pw"
+              type="password"
+              placeholder="Password"
+              value={this.state.password}
+              onChange={this.handlePasswordChange}
+            />
             <span className="showPw">Show</span>
           </div>
-          <button id="btn" onClick={this.goToMain}>
+          <button
+            id="btn"
+            onClick={this.goToMain}
+            style={{ backgroundColor: activateBtn ? "#055cb1" : "#c0dffd" }}
+          >
             Log In
           </button>
         </form>
@@ -32,7 +63,7 @@ class WeunLoginBox extends React.Component {
         </div>
         <span
           className="login-fb"
-          onclick="location.href='https://www.facebook.com'"
+          // onClick="location.href='https://www.facebook.com'"
         >
           <img
             className="fb-img"
