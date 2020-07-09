@@ -193,7 +193,6 @@ class Feeds extends React.Component {
             <button className="article-btn">Post</button>
           </div>
         </article>
-
         <article className="article">
           <header className="article-header">
             <div className="circle">

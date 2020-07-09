@@ -3,9 +3,9 @@ import { withRouter } from "react-router-dom";
 import "./Login.scss";
 
 class WeunLoginBox extends React.Component {
-  goToMain() {
+  goToMain = () => {
     this.props.history.push("/main-weunjeong");
-  }
+  };
   render() {
     return (
       <div className="login-box">
@@ -22,7 +22,7 @@ class WeunLoginBox extends React.Component {
             <input id="pw" type="password" placeholder="Password" />
             <span className="showPw">Show</span>
           </div>
-          <button id="btn" onClick={this.goToMain.bind(this)}>
+          <button id="btn" onClick={this.goToMain}>
             Log In
           </button>
         </form>
