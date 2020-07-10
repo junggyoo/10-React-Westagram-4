@@ -3,15 +3,12 @@ import { withRouter } from "react-router-dom";
 import "./Login.scss";
 
 class WeunLoginBox extends React.Component {
-  goToMain = () => {
-    this.props.history.push("/main-weunjeong");
-  };
-
   constructor() {
     super();
     this.state = {
       id: "",
       password: "",
+      hidden: true,
     };
   }
 
@@ -21,6 +18,32 @@ class WeunLoginBox extends React.Component {
 
   handlePasswordChange = (e) => {
     this.setState({ password: e.target.value });
+  };
+
+  checkValidity = (e) => {
+    e.preventDefault();
+    const { id, password } = this.state;
+    const checkId = id.includes("@");
+    const checkPw = password.length >= 5;
+    if ((checkId && checkPw) || e.keycode === 13) {
+      console.log(id);
+      console.log(password);
+      this.props.history.push("/main-weunjeong");
+    }
+    if (!checkId) {
+      alert("ID는 @를 포함해야 합니다");
+    }
+    if (!checkPw) {
+      alert("Password는 5글자 이상이어야 합니다");
+    }
+  };
+
+  showPassword = () => {
+    this.setState({ hidden: !this.state.hidden });
+  };
+
+  moveToFacebook = () => {
+    window.open("https://www.facebook.com");
   };
 
   render() {
@@ -42,16 +65,19 @@ class WeunLoginBox extends React.Component {
           <div className="pw-container">
             <input
               id="pw"
-              type="password"
+              type={this.state.hidden ? "password" : "text"}
               placeholder="Password"
               value={this.state.password}
               onChange={this.handlePasswordChange}
             />
-            <span className="showPw">Show</span>
+            <span className="showPw" onClick={this.showPassword}>
+              Show
+            </span>
           </div>
           <button
             id="btn"
-            onClick={this.goToMain}
+            onClick={this.checkValidity}
+            onKeyUp={this.checkValidity}
             style={{ backgroundColor: activateBtn ? "#055cb1" : "#c0dffd" }}
           >
             Log In
@@ -61,10 +87,7 @@ class WeunLoginBox extends React.Component {
           <hr /> OR
           <hr />
         </div>
-        <span
-          className="login-fb"
-          // onClick="location.href='https://www.facebook.com'"
-        >
+        <span className="login-fb" onClick={this.moveToFacebook}>
           <img
             className="fb-img"
             alt="fb-img"
