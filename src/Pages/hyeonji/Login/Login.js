@@ -6,6 +6,7 @@ class Login extends React.Component {
   goToMain = () => {
     this.props.history.push("/main-hyeonji");
   };
+
   render() {
     return (
       <div className="Login">
