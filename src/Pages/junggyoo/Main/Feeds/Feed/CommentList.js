@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CommentContainer from "./CommentContainer";
+import "./CommentList.scss";
 
 class CommentList extends Component {
   render() {
@@ -9,7 +10,7 @@ class CommentList extends Component {
       <CommentContainer id={id} text={text} key={id} />
     ));
 
-    return <div>{commentList}</div>;
+    return <div className="CommentList">{commentList}</div>;
   }
 }
 

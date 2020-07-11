@@ -10,20 +10,18 @@
     border: none;
   }
 
-  .create-button {
+  input::placeholder {
+    font-size: 14px;
+  }
+
+  .createButton {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     padding-left: 1rem;
-    padding-right: 1rem;
     margin-left: 1rem;
-    background: #22b8cf;
     border-radius: 3px;
-    color: white;
-    font-weight: 600;
+    font-size: 14px;
+    color: #c4dff6;
     cursor: pointer;
-  }
-
-  .create-button:hover {
-    background: #3bc9db;
   }
 }

@@ -1,22 +1,39 @@
-.Login {
+.JunggyooLogin {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fafafa;
 
-  .loginBorder {
+  .loginMobileImg {
+    width: 390px;
+    height: 620px;
+    margin-right: 20px;
+  }
+
+  .loginContainer {
+    width: 350px;
+    height: 747px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .Login {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height: 60vh;
-    border: 2px solid lightgray;
-    max-width: 500px;
+    border: 1px solid lightgray;
+    max-width: 350px;
+    height: 380px;
     width: 100%;
     border-radius: 2px;
+    background-color: #ffffff;
 
     .loginLogo {
-      margin-top: 50px;
+      margin-top: 30px;
     }
 
     .loginBox {
@@ -32,11 +49,18 @@
 
       .loginBtn {
         margin-top: 10px;
+        width: 268px;
+        height: 38px;
+        background-color: #c0e0fe;
+        border-radius: 5px;
+        border: none;
+        font-size: 20px;
+        color: #f7fdff;
       }
 
       input {
-        width: 350px;
-        height: 50px;
+        width: 268px;
+        height: 38px;
         border: 1px solid #dbdbdb;
         background-color: #fafafa;
         border-radius: 2px;
@@ -48,23 +72,100 @@
         font-size: 15px;
       }
 
-      button {
-        width: 350px;
-        height: 45px;
-        background-color: #c0e0fe;
-        border-radius: 5px;
-        border: none;
-        font-size: 20px;
-        color: #f7fdff;
+      .loginOrLine {
+        display: flex;
+        justify-content: space-around;
+        width: 268px;
+
+        .or {
+          width: 70px;
+          margin: 0 18px;
+          font-size: 13px;
+          font-weight: bold;
+          color: #8e8e8e;
+        }
+
+        .line {
+          position: relative;
+          height: 1px;
+          width: 100%;
+          border-top: 1px solid #dbdbdb;
+          top: 0.45em;
+        }
+      }
+
+      .facebookLogin {
+        width: 268px;
+        height: 20px;
+        margin: 8px 0 8px 0;
+        background-color: #ffffff;
+        color: #3b507d;
+        font-size: 16px;
+        font-weight: bold;
+
+        span {
+          font-size: 14px;
+        }
       }
     }
 
     .loginPasswordFind {
+      margin-top: 5px;
       margin-bottom: 10px;
 
       a {
-        color: #385185;
         text-decoration: none;
+        color: #385185;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .signUpContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgray;
+    max-width: 350px;
+    height: 63px;
+    width: 100%;
+    border-radius: 2px;
+    margin-top: 15px;
+    font-size: 14px;
+    background-color: #ffffff;
+
+    p {
+      color: #8e8e8e;
+      a {
+        color: #2c93e3;
+        margin-left: 5px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .appDownContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 350px;
+    height: 102px;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 14px;
+
+    p {
+      margin: 10px 20px;
+    }
+
+    .appDownBox {
+      margin: 10px 0;
+
+      img {
+        width: 136px;
+        height: 40px;
+        margin: 0 5px;
       }
     }
   }

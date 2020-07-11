@@ -16,7 +16,7 @@ class Feed extends React.Component {
   };
 
   handleCreate = () => {
-    const { input, id, comments } = this.state;
+    const { input, comments } = this.state;
     this.setState({
       input: "",
       comments: comments.concat({
