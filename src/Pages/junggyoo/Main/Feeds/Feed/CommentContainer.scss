@@ -1,0 +1,13 @@
+.CommentContainer {
+  display: flex;
+  align-items: center;
+
+  .id {
+    font-weight: bold;
+  }
+
+  .text {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,134 @@
+.Feed {
+  .feed {
+    /* Feed head */
+    &-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      width: 614px;
+      height: 60px;
+
+      .meta {
+        display: flex;
+
+        .profileImage {
+          margin-right: 20px;
+
+          img {
+            width: 32px;
+            border-radius: 50%;
+          }
+        }
+
+        .profileInfo {
+          .userName {
+            font-weight: bold;
+            font-size: 14px;
+          }
+
+          .location {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .feedHeadBtn img {
+        width: 16px;
+      }
+    }
+
+    .feedMain {
+      img {
+        max-width: 614px;
+        width: 100%;
+      }
+    }
+
+    /* Feed Social */
+    .socialContainer {
+      .socialBtns {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 8px;
+
+        button {
+          all: unset;
+          cursor: pointer;
+          padding: 8px;
+
+          img {
+            width: 24px;
+          }
+        }
+      }
+      .LikeNumberAndUsers {
+        padding: 0 16px;
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+
+      .contents {
+        padding: 0 16px;
+
+        #userId {
+          font-size: 14px;
+          font-weight: bold;
+          margin-bottom: 8px;
+        }
+      }
+
+      .feedTime {
+        padding: 0 16px;
+        font-size: 10px;
+        margin-bottom: 8px;
+      }
+
+      .replyContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        padding: 0 16px;
+      }
+
+      .replyInput {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 16px;
+        border-top: 1px solid #dbdbdb;
+        height: 56px;
+
+        .replyForm {
+          display: flex;
+          align-items: center;
+          max-width: 580px;
+          width: 100%;
+
+          input {
+            border: none;
+            box-shadow: none;
+            overflow: auto;
+            outline: none;
+            resize: none;
+            background-color: transparent;
+            width: 100%;
+            height: 18px;
+          }
+
+          .replyUpBtn {
+            all: unset;
+            cursor: pointer;
+            font-size: small;
+            color: #c4dff6;
+            width: 30px;
+            height: 18px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
