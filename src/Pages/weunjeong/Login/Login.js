@@ -25,7 +25,7 @@ class WeunLoginBox extends React.Component {
     const { id, password } = this.state;
     const checkId = id.includes("@");
     const checkPw = password.length >= 5;
-    if ((checkId && checkPw) || e.keycode === 13) {
+    if ((checkId && checkPw) || e.key === "Enter") {
       console.log(id);
       console.log(password);
       this.props.history.push("/main-weunjeong");
@@ -34,7 +34,7 @@ class WeunLoginBox extends React.Component {
       alert("ID는 @를 포함해야 합니다");
     }
     if (!checkPw) {
-      alert("Password는 5글자 이상이어야 합니다");
+      alert("Password는 4글자 이상이어야 합니다");
     }
   };
 

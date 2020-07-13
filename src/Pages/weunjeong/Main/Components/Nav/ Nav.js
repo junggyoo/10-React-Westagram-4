@@ -2,7 +2,32 @@ import React from "react";
 import "./Nav.scss";
 
 class Nav extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      focus: false,
+      keyword: "",
+    };
+  }
+
+  eraseSearchImg = () => {
+    this.setState({ focus: !this.state.focus });
+  };
+
+  handleKeyword = (e) => {
+    this.setState({ keyword: e.target.value });
+  };
+
+  searchKeyword = (e) => {
+    if (e.keyCode === 13) {
+      window.open(
+        `https://www.instagram.com/explore/tags/${this.state.keyword}`
+      );
+    }
+  };
+
   render() {
+    const searchFocus = this.state.focus;
     return (
       <nav className="nav">
         <div className="nav-icons">
@@ -22,14 +47,18 @@ class Nav extends React.Component {
             <img
               id="search-img"
               alt="searchImg"
+              style={{ display: searchFocus ? "none" : "flex" }}
               src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
             />
             <input
               id="search"
               type="text"
               placeholder="Search"
-              onfocus="eraseImg()"
-              onfocusout="showImg()"
+              value={this.state.keyword}
+              onChange={this.handleKeyword}
+              onFocus={this.eraseSearchImg}
+              onBlur={this.eraseSearchImg}
+              onKeyUp={this.searchKeyword}
             />
           </div>
           <div className="nav-right">

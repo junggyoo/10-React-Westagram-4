@@ -3,7 +3,76 @@ import Emoji from "./Emoji";
 import "./Feeds.scss";
 
 class Feeds extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      hidden: true,
+      addedComment: "",
+      commentToGet: [],
+      showId: false,
+    };
+  }
+
+  showComments = () => {
+    const { hidden } = this.state;
+    hidden
+      ? this.setState({
+          hidden: !hidden,
+        })
+      : this.setState({
+          hidden: !hidden,
+        });
+  };
+
+  handleComment = (e) => {
+    this.setState({
+      addedComment: e.target.value,
+    });
+  };
+
+  getComment = () => {
+    const { addedComment, commentToGet } = this.state;
+    commentToGet.push(addedComment);
+    this.setState({
+      commentToGet: commentToGet,
+      showId: true,
+      addedComment: "",
+    });
+  };
+
+  pressKeyToPost = (e) => {
+    if (this.state.addedComment.length !== 0 && e.key === "Enter") {
+      this.getComment();
+    }
+  };
+
   render() {
+    const activatePost = this.state.addedComment.length !== 0;
+    const storeComment = this.state.commentToGet.map((content, index) => (
+      <div className="comment-line">
+        <div className="line-left">
+          <span className="comment-id">
+            {this.state.showId ? "claire_bbo" : ""}
+          </span>
+          <span className="comment-content" key={index}>
+            &nbsp;&nbsp;{content}
+          </span>
+        </div>
+        <div className="line-right">
+          <img
+            className="comment-delete"
+            alt="deleteImg"
+            src="images/weunjeong/close-button.png"
+          />
+          <img
+            className="comment-heart"
+            alt="heart"
+            src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
+          />
+        </div>
+      </div>
+    ));
+
     return (
       <div className="feeds">
         <article className="article">
@@ -72,8 +141,15 @@ class Feeds extends React.Component {
               <Emoji symbol="💕" />
             </span>
             <span className="comment-blue">#dogstagram #puppy #ilovedogs</span>
-            <button className="footer-btn">View 3 more comments</button>
-            <div className="hidden-comment">
+            <br />
+            <button className="footer-btn" onClick={this.showComments}>
+              {this.state.hidden ? "View 3 more comments" : "Hide comments"}
+            </button>
+            <div
+              className={
+                this.state.hidden ? "hidden-comment" : "show-hidden-comment"
+              }
+            >
               <div className="comment-line">
                 <div className="line-left">
                   <span className="comment-id">claire_bbo</span>
@@ -183,14 +259,24 @@ class Feeds extends React.Component {
                 </div>
               </div>
             </div>
+            {storeComment}
           </div>
           <div className="write-comment">
             <input
               className="write"
               type="text"
               placeholder="Add a comment..."
+              onChange={this.handleComment}
+              value={this.state.addedComment}
+              onKeyUp={this.pressKeyToPost}
             />
-            <button className="article-btn">Post</button>
+            <button
+              className="article-btn"
+              style={{ color: activatePost ? "#0095f6" : "#c0e0fd" }}
+              onClick={this.getComment}
+            >
+              Post
+            </button>
           </div>
         </article>
         <article className="article">
@@ -266,11 +352,17 @@ class Feeds extends React.Component {
               June 2020
             </span>
             <br />
-            <button className="footer-btn">View 2 more comments</button>
+            <button className="footer-btn" onClick={this.showComments}>
+              {this.state.hidden ? "View 2 more comments" : "Hide comments"}
+            </button>
             <br />
-            <div className="hidden-comment">
+            <div
+              className={
+                this.state.hidden ? "hidden-comment" : "show-hidden-comment"
+              }
+            >
               <div className="comment-line">
-                <div class="line-left">
+                <div className="line-left">
                   <span className="comment-id">beatrice</span>
                   <span className="comment-content">
                     &nbsp;&nbsp;OMG
@@ -355,14 +447,24 @@ class Feeds extends React.Component {
                 </div>
               </div>
             </div>
+            {storeComment}
           </div>
           <div className="write-comment">
             <input
               className="write"
               type="text"
               placeholder="Add a comment..."
+              onChange={this.handleComment}
+              value={this.state.addedComment}
+              onKeyUp={this.pressKeyToPost}
             />
-            <button className="article-btn">Post</button>
+            <button
+              className="article-btn"
+              style={{ color: activatePost ? "#0095f6" : "#c0e0fd" }}
+              onClick={this.getComment}
+            >
+              Post
+            </button>
           </div>
         </article>
         <article className="article">
@@ -473,14 +575,24 @@ class Feeds extends React.Component {
                 </div>
               </div>
             </div>
+            {storeComment}
           </div>
           <div className="write-comment">
             <input
               className="write"
               type="text"
               placeholder="Add a comment..."
+              onChange={this.handleComment}
+              value={this.state.addedComment}
+              onKeyUp={this.pressKeyToPost}
             />
-            <button className="article-btn">Post</button>
+            <button
+              className="article-btn"
+              style={{ color: activatePost ? "#0095f6" : "#c0e0fd" }}
+              onClick={this.getComment}
+            >
+              Post
+            </button>
           </div>
         </article>
       </div>

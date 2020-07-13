@@ -9,9 +9,11 @@ class WeunMain extends React.Component {
     return (
       <Fragment>
         <Nav />
-        <div className="weunjeongMain">
-          <Feeds />
-          <Right />
+        <div className="WeunContainer">
+          <div className="weunjeongMain">
+            <Feeds />
+            <Right />
+          </div>
         </div>
       </Fragment>
     );
