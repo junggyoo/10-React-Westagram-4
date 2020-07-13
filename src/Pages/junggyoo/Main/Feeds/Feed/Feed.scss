@@ -1,7 +1,7 @@
 .Feed {
-  .feed {
+  .feedContainer {
     /* Feed head */
-    &-head {
+    .head {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -69,14 +69,11 @@
         margin-bottom: 8px;
       }
 
-      .contents {
+      .userId {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 8px;
         padding: 0 16px;
-
-        #userId {
-          font-size: 14px;
-          font-weight: bold;
-          margin-bottom: 8px;
-        }
       }
 
       .feedTime {

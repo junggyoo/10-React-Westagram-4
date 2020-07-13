@@ -1,9 +1,9 @@
 import React from "react";
 import "./Form.scss";
 
-const Form = ({ value, onChange, onCreate, onKeypress }) => {
+const CommentInputContanier = ({ value, onChange, onCreate, onKeypress }) => {
   return (
-    <div className="form">
+    <div className="CommentInputContanier">
       <input
         height="14px"
         value={value}
@@ -11,11 +11,11 @@ const Form = ({ value, onChange, onCreate, onKeypress }) => {
         onKeyPress={onKeypress}
         placeholder="댓글달기..."
       />
-      <div className="createButton" onClick={onCreate}>
+      <div className="createButton" onClick={value.length > 0 && onCreate}>
         게시
       </div>
     </div>
   );
 };
 
-export default Form;
+export default CommentInputContanier;

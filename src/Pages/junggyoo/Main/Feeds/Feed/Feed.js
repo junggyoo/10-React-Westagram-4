@@ -1,10 +1,11 @@
 import React from "react";
-import "./Feed.scss";
 import CommentList from "./CommentList";
-import Form from "./Form";
+import CommentInputContanier from "./Form";
+import "./Feed.scss";
 
 class Feed extends React.Component {
   state = {
+    id: "juuuuungq",
     input: "",
     comments: [{ text: "" }],
   };
@@ -16,19 +17,17 @@ class Feed extends React.Component {
   };
 
   handleCreate = () => {
-    const { input, comments } = this.state;
+    const { id, input, comments } = this.state;
     this.setState({
       input: "",
       comments: comments.concat({
-        text: "juuuuungq  " + input,
+        text: `${id}  ${input}`,
       }),
     });
   };
 
   handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      this.handleCreate();
-    }
+    this.state.input && e.key === "Enter" && this.handleCreate();
   };
 
   render() {
@@ -37,8 +36,8 @@ class Feed extends React.Component {
 
     return (
       <div className="Feed">
-        <article className="feed">
-          <div className="feed-head">
+        <article className="feedContainer">
+          <div className="head">
             <div className="meta">
               <div className="profileImage">
                 <img
@@ -100,16 +99,14 @@ class Feed extends React.Component {
               </div>
             </div>
             <div className="LikeNumberAndUsers">좋아요 129348712890347개</div>
-            <div className="contents">
-              <div id="userId">juuuuungq</div>
-            </div>
+            <div className="userId">juuuuungq</div>
             <div className="replyInfo"></div>
             <div className="replyContainer">
               <CommentList comments={comments} />
             </div>
             <div className="feedTime">1시간 전</div>
             <div className="replyInput">
-              <Form
+              <CommentInputContanier
                 value={input}
                 onKeypress={handleKeyPress}
                 onChange={handleChange}

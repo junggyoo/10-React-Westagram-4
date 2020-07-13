@@ -1,28 +1,29 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./junggyooLogin.scss";
 
 class JunggyooLogin extends React.Component {
   goToMain = () => {
-    this.state.email.indexOf("@") !== -1 &&
+    this.state.email.includes("@") &&
       this.state.password.length >= 5 &&
       this.props.history.push("/main-junggyoo");
   };
+
   state = {
     email: "",
     password: "",
+    logingBtnActive: false,
   };
 
   onChange = (e) => {
-    let emailInput = e.target.name;
-    let passwordInput = {
-      ...this.state,
-    };
-    emailInput === "email"
-      ? (passwordInput.email = e.target.value)
-      : (passwordInput.password = e.target.value);
-
-    this.setState(passwordInput);
+    this.setState({
+      [e.target.name]: e.target.value,
+      logingBtnActive:
+        this.state.email.includes("@") && this.state.password.length >= 5
+          ? true
+          : false,
+    });
   };
 
   render() {
@@ -34,7 +35,7 @@ class JunggyooLogin extends React.Component {
           alt=""
         />
         <div className="loginContainer">
-          <div className="Login">
+          <div className="LoginBorderBox">
             <header className="loginLogo">
               <img src="/images/junggyoo/logo_text.png" alt="" />
             </header>
@@ -52,20 +53,17 @@ class JunggyooLogin extends React.Component {
                 <input
                   className="loginInputPw"
                   type="password"
+                  name="password"
                   value={this.state.password}
                   placeholder="비밀번호"
                 />
               </div>
               <div className="loginBtnBox">
                 <button
-                  className="loginBtn"
+                  className={
+                    this.state.logingBtnActive ? "loginBtnActive" : "loginBtn"
+                  }
                   onClick={this.goToMain}
-                  style={{
-                    backgroundColor:
-                      this.state.email.indexOf("@") !== -1 &&
-                      this.state.password.length >= 5 &&
-                      "#0096f6",
-                  }}
                 >
                   로그인
                 </button>
@@ -77,12 +75,14 @@ class JunggyooLogin extends React.Component {
               </div>
               <button className="facebookLogin">
                 <i class="fab fa-facebook-square"></i>
-                <span> Facebook으로 로그인</span>
+                <a href="https://www.facebook.com/login.php?skip_api_login=1&api_key=124024574287414&kid_directed_site=0&app_id=124024574287414&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fdialog%2Foauth%3Fclient_id%3D124024574287414%26redirect_uri%3Dhttps%253A%252F%252Fwww.instagram.com%252Faccounts%252Fsignup%252F%26state%3D%257B%2522fbLoginKey%2522%253A%2522exidbn11f5ple3t5mc11b0sz7r99gmh212iafqk8h7h7y1ueeif1%2522%252C%2522fbLoginReturnURL%2522%253A%2522%252F%2522%257D%26scope%3Demail%26response_type%3Dcode%252Cgranted_scopes%26locale%3Dko_KR%26ret%3Dlogin%26fbapp_pres%3D0%26logger_id%3D69c27629-e4fa-4125-8835-91492a07083e&cancel_url=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fsignup%2F%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%26state%3D%257B%2522fbLoginKey%2522%253A%2522exidbn11f5ple3t5mc11b0sz7r99gmh212iafqk8h7h7y1ueeif1%2522%252C%2522fbLoginReturnURL%2522%253A%2522%252F%2522%257D%23_%3D_&display=page&locale=ko_KR&pl_dbl=0">
+                  <span> Facebook으로 로그인</span>
+                </a>
               </button>
               <section className="loginPasswordFind">
-                <a href="-">
+                <Link to="accounts/password/reset/">
                   <p>비밀번호를 잊으셨나요?</p>
-                </a>
+                </Link>
               </section>
             </section>
           </div>
@@ -90,9 +90,9 @@ class JunggyooLogin extends React.Component {
             <div className="signUpBox">
               <p>
                 계정이 없으신가요?
-                <a href="/accounts/emailsignup/">
+                <Link to="/accounts/emailsignup/">
                   <span>가입하기</span>
-                </a>
+                </Link>
               </p>
             </div>
           </div>
