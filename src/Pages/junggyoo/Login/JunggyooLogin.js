@@ -1,17 +1,17 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import "./Login.css";
+import "./junggyooLogin.scss";
 
-class Login extends React.Component {
-  goToMain() {
+class JunggyooLogin extends React.Component {
+  goToMain = () => {
     this.props.history.push("/main-junggyoo");
-  }
+  };
   render() {
     return (
-      <div>
+      <div className="Login">
         <div className="loginBorder">
           <header className="loginLogo">
-            <img src="/logo_text.png" alt="" />
+            <img src="/images/junggyoo/logo_text.png" alt="" />
           </header>
           <section className="loginBox">
             <div className="loginId">
@@ -29,7 +29,7 @@ class Login extends React.Component {
               />
             </div>
             <div className="loginBtnBox">
-              <button className="loginBtn" onClick={this.goToMain.bind(this)}>
+              <button className="loginBtn" onClick={this.goToMain}>
                 로그인
               </button>
             </div>
@@ -45,4 +45,4 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(Login);
+export default withRouter(JunggyooLogin);
