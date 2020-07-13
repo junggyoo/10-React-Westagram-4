@@ -1,6 +1,5 @@
 import React from "react";
 import "./Nav.scss";
-// import logo_icon from "../../../../../public/images/hyeonji/logo_text.png";
 
 class Nav extends React.Component {
   render() {
