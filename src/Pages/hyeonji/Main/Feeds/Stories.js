@@ -9,43 +9,43 @@ class Stories extends React.Component {
       storyData: [
         {
           img: "/images/hyeonji/cat/cat1.jpg",
-          userId: "hey1",
+          userId: "cat1",
         },
         {
           img: "/images/hyeonji/cat/cat2.jpg",
-          userId: "hey2",
+          userId: "cat2",
         },
         {
           img: "/images/hyeonji/cat/cat3.jpg",
-          userId: "hey3",
+          userId: "cat3",
         },
         {
           img: "/images/hyeonji/cat/cat4.png",
-          userId: "hey4",
+          userId: "cat4",
         },
         {
           img: "/images/hyeonji/cat/cat10.jpeg",
-          userId: "hey5",
+          userId: "cat5",
         },
         {
           img: "/images/hyeonji/cat/cat5.jpeg",
-          userId: "hey6",
+          userId: "cat6",
         },
         {
           img: "/images/hyeonji/cat/cat6.jpg",
-          userId: "hey7",
+          userId: "cat7",
         },
         {
           img: "/images/hyeonji/cat/cat7.jpg",
-          userId: "hey8",
+          userId: "cat",
         },
         {
           img: "/images/hyeonji/cat/cat8.jpg",
-          userId: "hey9",
+          userId: "cat9",
         },
         {
           img: "/images/hyeonji/cat/cat9.jpeg",
-          userId: "hey10",
+          userId: "cat10",
         },
       ],
     };

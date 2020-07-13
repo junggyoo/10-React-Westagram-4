@@ -11,17 +11,12 @@ class CommentContainer extends React.Component {
       num: 1,
       heartState: false,
       hideCommentState: false,
-      deleteComment: (num) => {
-        const commentFilter = this.state.comments.filter((eachComment) => {
-          return eachComment.num !== num;
-        });
-        this.setState({ comments: commentFilter });
-      },
     };
   }
 
   handleCommentInput = (e) => {
     this.setState({ inputCommentValue: e.target.value });
+    e.target.value = "";
   };
 
   //comments배열의 길이가 2 이상이면 댓글 숨기기 & 모두 보기 생성을 제어하는 hideCommentState를 true로 변경
@@ -29,6 +24,13 @@ class CommentContainer extends React.Component {
     if (this.state.comments.length > 2) {
       this.setState({ hideCommentState: true });
     }
+  };
+
+  deleteComment = (num) => {
+    const commentFilter = this.state.comments.filter((eachComment) => {
+      return eachComment.num !== num;
+    });
+    this.setState({ comments: commentFilter });
   };
 
   // 1) concat 메소드로 input창에 입력된 새 댓글을 기존의 comments에 더한 새로운 comments를 만듬
@@ -41,6 +43,7 @@ class CommentContainer extends React.Component {
           num: num,
           comment: inputCommentValue,
         }),
+        inputCommentValue: "",
       },
       this.handleHideComment
     );
@@ -58,8 +61,8 @@ class CommentContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="comment-box">
+      <div className="comment-box">
+        <div className="comments">
           {this.state.comments.map((comment, i) => {
             return (
               <CommentBox
@@ -69,12 +72,12 @@ class CommentContainer extends React.Component {
                 num={comment.num}
                 index={i}
                 hideComment={this.state.hideCommentState}
-                deleteComment={this.state.deleteComment}
+                deleteComment={this.deleteComment}
               />
             );
           })}
         </div>
-        <div className="모두보기테스트">
+        <div className="show-all-comment">
           <div
             className={
               this.state.hideCommentState

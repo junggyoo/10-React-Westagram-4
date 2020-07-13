@@ -1,6 +1,6 @@
 import React from "react";
 import "./StoryItem.scss";
-import CommentContainer from "./CommentConainer";
+import CommentContainer from "./CommentContainer";
 
 class Feed extends React.Component {
   constructor(props) {

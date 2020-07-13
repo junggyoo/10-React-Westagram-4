@@ -32,7 +32,7 @@ class CommentBox extends React.Component {
               src="/images/hyeonji/x.png"
             />{" "}
             <img
-              alt="unclicked heart"
+              alt="small heart icon"
               onClick={this.handleCommentLikeState}
               className="submit-heart"
               src={
