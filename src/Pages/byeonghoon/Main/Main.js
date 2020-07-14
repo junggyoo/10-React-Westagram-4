@@ -1,21 +1,21 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Nav from "./Nav/Nav";
 import MainCenter from "./MainCenter/MainCenter";
 import MainRight from "./MainRight/MainRight";
 import "./Main.scss";
 
-class Main extends Component {
+class ByeonghoonMain extends Component {
   render() {
     return (
-      <div>
+      <Fragment>
         <Nav />
         <div className="byeonghoonMain">
           <MainCenter />
           <MainRight />
         </div>
-      </div>
+      </Fragment>
     );
   }
 }
 
-export default Main;
+export default ByeonghoonMain;

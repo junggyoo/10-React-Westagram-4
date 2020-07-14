@@ -10,7 +10,7 @@ class Right extends React.Component {
             <div className="container">
               <div className="user-img">
                 <img
-                  alt="my image"
+                  alt="my"
                   src="https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s150x150/17882650_1897373507218922_5665567046067290112_a.jpg?_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=YDY0gaOL168AX-zxqjH&oh=69916108cfd098a2e537dff3968cf40b&oe=5F2486BC"
                 />
               </div>

@@ -4,7 +4,7 @@ import "./MainCenter.scss";
 class MainCenter extends Component {
   render() {
     return (
-      <section className="section_main">
+      <section className="MainCenter">
         <div className="wrap_story_feeds">
           <div className="wrap_story_border">
             <div className="wrap_story_images_box">

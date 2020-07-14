@@ -4,7 +4,7 @@ import "./MainRight.scss";
 class MainRight extends Component {
   render() {
     return (
-      <div className="wrap_main_right">
+      <div className="MainRight">
         <div className="main_right">
           <div className="right_profile">
             <div className="wrap_id_text">

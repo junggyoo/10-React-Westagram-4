@@ -12,7 +12,7 @@ class Login extends React.Component {
       <div className="Login">
         <div className="container">
           <div className="img-container">
-            <img src="/images/hyeonji/logo_text.png" alt="logo image" />
+            <img src="/images/hyeonji/logo_text.png" alt="logo" />
           </div>
           <div className="input-box">
             <input
