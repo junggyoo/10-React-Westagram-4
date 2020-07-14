@@ -3,20 +3,19 @@ import React from "react";
 class AddComment extends React.Component {
   render() {
     return this.props.commentToGet.map((content) => (
-      <div className="comment-line">
+      <div className="comment-line" id={content.id}>
         <div className="line-left">
           <span className="comment-id">
             {this.props.myId ? "claire_bbo" : ""}
           </span>
-          <span className="comment-content" key={content.id}>
-            &nbsp;&nbsp;{content.comment}
-          </span>
+          <span className="comment-content">&nbsp;&nbsp;{content.comment}</span>
         </div>
         <div className="line-right">
           <img
             className="comment-delete"
             alt="deleteImg"
             src="images/weunjeong/close-button.png"
+            onClick={this.props.deleteComment}
           />
           <img
             className="comment-heart"

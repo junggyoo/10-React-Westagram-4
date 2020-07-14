@@ -12,6 +12,7 @@ class SecondFeed extends React.Component {
       commentToGet: [],
       showId: false,
       key: 0,
+      beatingHeart: false,
     };
   }
 
@@ -49,7 +50,20 @@ class SecondFeed extends React.Component {
     }
   };
 
+  deleteComment = (e) => {
+    const targetKey = e.target.parentNode.parentNode.id;
+    const result = this.state.commentToGet.filter(
+      (content) => content.id !== Number(targetKey)
+    );
+    this.setState({ commentToGet: result });
+  };
+
+  likeHeart = () => {
+    this.setState({ beatingHeart: !this.state.beatingHeart });
+  };
+
   render() {
+    const { beatingHeart } = this.state;
     const activatePost = this.state.addedComment.length !== 0;
     return (
       <article className="article">
@@ -85,11 +99,41 @@ class SecondFeed extends React.Component {
         />
         <footer>
           <div className="footer-left">
-            <img
-              className="article-heart"
-              alt="heartImg"
-              src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
-            />
+            <div className="heart-container">
+              <img
+                className={
+                  beatingHeart ? "article-heart-hidden" : "article-heart"
+                }
+                onClick={this.likeHeart}
+                alt="heartImg"
+                src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
+              />
+              <svg
+                className={
+                  beatingHeart ? "beating-heart" : "beating-heart-hidden"
+                }
+                width="60"
+                height="60"
+                viewBox="20 90 160 160"
+                onClick={this.likeHeart}
+              >
+                <g transform="translate(100 100)">
+                  <path
+                    transform="translate(-50 -50)"
+                    fill="tomato"
+                    d="M92.71,7.27L92.71,7.27c-9.71-9.69-25.46-9.69-35.18,0L50,14.79l-7.54-7.52C32.75-2.42,17-2.42,7.29,7.27v0 c-9.71,9.69-9.71,25.41,0,35.1L50,85l42.71-42.63C102.43,32.68,102.43,16.96,92.71,7.27z"
+                  ></path>
+                  <animateTransform
+                    attributeName="transform"
+                    type="scale"
+                    values="1; 1.5; 1.25; 1.5; 1.5; 1;"
+                    dur="1s"
+                    repeatCount="indefinite"
+                    additive="sum"
+                  ></animateTransform>
+                </g>
+              </svg>
+            </div>
             <img
               className="article-balloon"
               alt="balloonImg"
@@ -110,7 +154,9 @@ class SecondFeed extends React.Component {
           </div>
         </footer>
         <div className="footer-text">
-          <p className="comment-bold">41,338 Likes</p>
+          <p className="comment-bold">
+            {beatingHeart ? "41,339" : "41,338"} likes
+          </p>
           <span className="comment-bold">c__l__o</span>
           <span className="comment-regular">
             &nbsp;&nbsp;Villa Saraceni at Scala dei Turchi, Sicily, Italy{" "}
@@ -219,6 +265,7 @@ class SecondFeed extends React.Component {
             </div>
           </div>
           <AddComment
+            deleteComment={this.deleteComment}
             commentToGet={this.state.commentToGet}
             myId={this.state.showId}
           />
