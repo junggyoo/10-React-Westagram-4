@@ -9,7 +9,6 @@ class CommentContainer extends React.Component {
       comments: [],
       inputCommentValue: "",
       num: 1,
-      heartState: false,
       hideCommentState: false,
     };
   }
@@ -36,26 +35,23 @@ class CommentContainer extends React.Component {
   // 1) concat 메소드로 input창에 입력된 새 댓글을 기존의 comments에 더한 새로운 comments를 만듬
   // 2) comments 배열의 구성은 num, comment 객체로 구성되어 있음 - num은 filter 메소드를 이용해 댓글 삭제 기능을 구현할 때 이용됨
   handleCreateNewArr = (e) => {
+    e.preventDefault();
     const { comments, inputCommentValue, num } = this.state;
+    const newComments = comments.concat({
+      num: num,
+      comment: inputCommentValue,
+    });
     this.setState(
       {
-        comments: comments.concat({
-          num: num,
-          comment: inputCommentValue,
-        }),
+        comments: newComments,
         inputCommentValue: "",
+        num: num + 1,
       },
-      this.handleHideComment
+      () => this.handleHideComment()
     );
-    this.setState({ num: num + 1 });
-    e.preventDefault();
   };
 
-  handleLikeState = () => {
-    this.setState({ heartState: !this.state.heartState });
-  };
-
-  clickShowAll = () => {
+  ShowAll = () => {
     this.setState({ hideCommentState: false });
   };
 
@@ -86,7 +82,7 @@ class CommentContainer extends React.Component {
             }
           >
             <span>댓글{this.state.comments.length}개</span>{" "}
-            <span onClick={this.clickShowAll}>모두 보기</span>
+            <span onClick={this.ShowAll}>모두 보기</span>
           </div>
         </div>
         <div className="time-stamp">

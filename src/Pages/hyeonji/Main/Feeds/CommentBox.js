@@ -13,21 +13,19 @@ class CommentBox extends React.Component {
   };
 
   render() {
+    const { hideComment, index, comment, deleteComment, num, id } = this.props;
     return (
       <div>
         <div
           className={
-            this.props.hideComment && this.props.index >= 2
-              ? "each-comment-hide"
-              : "each-comment"
+            hideComment && index >= 2 ? "each-comment-hide" : "each-comment"
           }
         >
-          <span className="comment-id">{this.props.id}</span>{" "}
-          <span>{this.props.comment}</span>
+          <span className="comment-id">{id}</span> <span>{comment}</span>
           <div className="like-heart">
             <img
               alt="x"
-              onClick={() => this.props.deleteComment(this.props.num)}
+              onClick={() => deleteComment(num)}
               className="submit-x"
               src="/images/hyeonji/x.png"
             />{" "}
