@@ -8,6 +8,24 @@ class JunggyooLogin extends React.Component {
     this.state.email.includes("@") &&
       this.state.password.length >= 5 &&
       this.props.history.push("/main-junggyoo");
+
+    fetch("http://10.58.0.219:8000/user/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.access_token);
+        if (res.access_token) {
+          localStorage.setItem("wtw-token", res.access_token);
+        }
+      });
   };
 
   state = {

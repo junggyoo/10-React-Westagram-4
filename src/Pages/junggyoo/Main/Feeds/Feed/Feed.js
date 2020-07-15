@@ -5,8 +5,9 @@ import "./Feed.scss";
 
 class Feed extends React.Component {
   state = {
-    id: "juuuuungq",
+    id: 0,
     input: "",
+    name: "junggyoo",
     comments: [{ text: "" }],
   };
 
@@ -17,11 +18,12 @@ class Feed extends React.Component {
   };
 
   handleCreate = () => {
-    const { id, input, comments } = this.state;
+    const { input, name, comments } = this.state;
     this.setState({
       input: "",
+      id: this.id++,
       comments: comments.concat({
-        text: `${id}  ${input}`,
+        text: `${name}  ${input}`,
       }),
     });
   };
