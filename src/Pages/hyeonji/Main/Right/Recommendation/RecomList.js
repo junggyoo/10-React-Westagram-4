@@ -24,13 +24,6 @@ class RecomList extends React.Component {
     return (
       <div>
         <ul className="list-container">
-          {/* {this.state.recomData.map((item, i) => {
-            if (i < 5) {
-              return <RecomItem id={item.id} name={item.username} key={i} />;
-            }
-            return null;
-            //가지고 있는 데이터에서 5개의 데이터만 보여주려고 할 때, 위의 if문 말고 더 나은 방식?
-          })} */}
           {this.state.recomData.slice(0, 6).map((item, i) => {
             return <RecomItem id={item.id} name={item.username} key={i} />;
           })}
