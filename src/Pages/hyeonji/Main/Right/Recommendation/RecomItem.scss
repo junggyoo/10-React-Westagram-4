@@ -1,0 +1,52 @@
+.area-label {
+  width: 294px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label-left img {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  border: solid 0.5px grey;
+}
+
+.friend-img-box {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+.label-center {
+  width: 205.86px;
+  height: 28px;
+}
+
+.friend-id {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: black;
+  font-size: 14px;
+}
+
+.friend-info {
+  color: grey;
+}
+
+.friend-info {
+  width: 205.86px;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.label-right {
+  width: 31.14px;
+}
+
+.follow {
+  width: 31.14px;
+  font-size: 12px;
+  color: #4eb3f8;
+}
