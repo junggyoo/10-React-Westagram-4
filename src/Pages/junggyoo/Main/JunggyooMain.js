@@ -12,7 +12,9 @@ class JunggyooMain extends React.Component {
         <main>
           <section className="mainContainer">
             <Feeds />
-            <Right />
+            <article className="mainRight">
+              <Right />
+            </article>
           </section>
         </main>
       </div>
