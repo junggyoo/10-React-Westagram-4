@@ -91,11 +91,41 @@ article {
       justify-content: space-evenly;
       display: flex;
 
-      .article-heart,
-      .article-balloon,
+      .heart-container {
+        display: flex;
+        width: 30px;
+
+        .article-heart {
+          width: 30px;
+          height: 28px;
+          position: absolute;
+          cursor: pointer;
+        }
+
+        .article-heart-hidden {
+          display: none;
+        }
+
+        .beating-heart {
+          position: relative;
+          cursor: pointer;
+        }
+
+        .beating-heart-hidden {
+          display: none;
+        }
+      }
+
+      .article-balloon {
+        width: 30px;
+        height: 28px;
+        margin-left: 2px;
+      }
+
       .article-share {
         width: 30px;
         height: 28px;
+        margin-left: 4px;
       }
     }
 
@@ -144,7 +174,11 @@ article {
       display: none;
     }
 
-    // hidden&shown-comment에 공통으로 적용
+    .show-hidden-comment {
+      display: block;
+    }
+
+    // hidden&sho-hidden&shown-comment에 공통으로 적용
     .comment-line {
       display: flex;
       justify-content: space-between;
