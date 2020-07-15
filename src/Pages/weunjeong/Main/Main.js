@@ -7,6 +7,16 @@ import Right from "./Components/Right/Right";
 import "./Main.scss";
 
 class WeunMain extends React.Component {
+  //localstorage에 token있는 경우에만 메인페이지가 뜨게!
+  // componentDidMount = () => {
+  //   if (!localStorage.getItem("access_token")) {
+  //     alert("로그인 먼저 해주세요");
+  //     this.props.history.push("/login-weunjeong");
+  //   } else {
+  //     return;
+  //   }
+  // };
+
   render() {
     return (
       <Fragment>

@@ -26,9 +26,27 @@ class WeunLoginBox extends React.Component {
     const checkId = id.includes("@");
     const checkPw = password.length >= 5;
     if ((checkId && checkPw) || e.key === "Enter") {
-      console.log(id);
-      console.log(password);
+      // console.log(id);
+      // console.log(password);
       this.props.history.push("/main-weunjeong");
+      //회원가입 & 로그인시 스토리지에 토큰 저장
+      //   fetch("http://10.58.0.219:8000/user/sign-in", {
+      //     method: "POST",
+      //     body: JSON.stringify({
+      //       email: id,
+      //       password: password,
+      //     }),
+      //   })
+      //     .then((res) => res.json())
+      //     .then((res) => {
+      //       localStorage.setItem("access_token", res.access_token);
+      //       if (res.access_token) {
+      //         this.props.history.push("/main-weunjeong");
+      //         alert("로그인 성공");
+      //       } else {
+      //         alert("다시 로그인해주세요");
+      //       }
+      //     });
     }
     if (!checkId) {
       alert("ID는 @를 포함해야 합니다");
