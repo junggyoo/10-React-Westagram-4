@@ -1,7 +1,6 @@
-import React, { Fragment } from "react";
-import "./Feeds.scss";
+import React from "react";
 
-class CurrentShownComment extends React.Component {
+class ShownComment extends React.Component {
   render() {
     return this.props.shownComment.map((content) => (
       <div className="comment-line" id={content.id}>
@@ -26,4 +25,4 @@ class CurrentShownComment extends React.Component {
     ));
   }
 }
-export default CurrentShownComment;
+export default ShownComment;

@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Emoji from "./Emoji";
 import AddComment from "./AddComment";
-import CurrentHiddenComment from "./CurrentHiddenComment";
-import CurrentShownComment from "./CurrentShownComment";
+import HiddenComment from "./HiddenComment";
+import ShownComment from "./ShownComment";
 import "./Feeds.scss";
 
 class FirstFeed extends React.Component {
@@ -12,7 +12,7 @@ class FirstFeed extends React.Component {
       hidden: true,
       addedComment: "",
       commentToGet: [],
-      currentComment: [
+      hiddenComment: [
         { id: 0, user: "claire_bbo", comment: "예쁜 내 새꾸" },
         { id: 1, user: "naririn_kim", comment: "리즈 만나보고 싶어~" },
         { id: 2, user: "minjuuuuuya", comment: "산책가즈아아" },
@@ -73,12 +73,12 @@ class FirstFeed extends React.Component {
     this.setState({ commentToGet: result });
   };
 
-  deleteCurrentComment = (e) => {
+  deleteHiddenComment = (e) => {
     const currentKey = e.target.parentNode.parentNode.id;
-    const currentResult = this.state.currentComment.filter(
+    const currentResult = this.state.hiddenComment.filter(
       (content) => content.id !== Number(currentKey)
     );
-    this.setState({ currentComment: currentResult });
+    this.setState({ hiddenComment: currentResult });
   };
 
   deleteShownComment = (e) => {
@@ -97,9 +97,11 @@ class FirstFeed extends React.Component {
     const {
       hidden,
       addedComment,
-      currentComment,
+      commentToGet,
+      hiddenComment,
       shownComment,
       beatingHeart,
+      showId,
     } = this.state;
     const activatePost = addedComment.length !== 0;
     return (
@@ -201,27 +203,27 @@ class FirstFeed extends React.Component {
           <span className="comment-blue">#dogstagram #puppy #ilovedogs</span>
           <br />
           {/* 조건을 만족하면 무조건 보여주고 아니면 안보여준다 */}
-          {(currentComment.length > 0 || shownComment.length > 0) && (
+          {(hiddenComment.length > 0 || shownComment.length > 0) && (
             <button className="footer-btn" onClick={this.showComments}>
-              {hidden ? "View 3 more comments" : "Hide comments"}
+              {hidden ? "View more comments" : "Hide comments"}
             </button>
           )}
           <div className={hidden ? "hidden-comment" : "show-hidden-comment"}>
-            <CurrentHiddenComment
-              currentComment={this.state.currentComment}
-              deleteCurrentComment={this.deleteCurrentComment}
+            <HiddenComment
+              hiddenComment={hiddenComment}
+              deleteHiddenComment={this.deleteHiddenComment}
             />
           </div>
           <div className="shown-comment">
-            <CurrentShownComment
-              shownComment={this.state.shownComment}
+            <ShownComment
+              shownComment={shownComment}
               deleteShownComment={this.deleteShownComment}
             />
           </div>
           <AddComment
             deleteComment={this.deleteComment}
-            commentToGet={this.state.commentToGet}
-            myId={this.state.showId}
+            commentToGet={commentToGet}
+            myId={showId}
           />
         </div>
         <div className="write-comment">

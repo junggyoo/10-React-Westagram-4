@@ -1,9 +1,8 @@
-import React, { Fragment } from "react";
-import "./Feeds.scss";
+import React from "react";
 
-class CurrentHiddenComment extends React.Component {
+class HiddenComment extends React.Component {
   render() {
-    return this.props.currentComment.map((content) => (
+    return this.props.hiddenComment.map((content) => (
       <div className="comment-line" id={content.id}>
         <div className="line-left">
           <span className="comment-id">{content.user}</span>
@@ -14,7 +13,7 @@ class CurrentHiddenComment extends React.Component {
             className="comment-delete"
             alt="deleteImg"
             src="images/weunjeong/close-button.png"
-            onClick={this.props.deleteCurrentComment}
+            onClick={this.props.deleteHiddenComment}
           />
           <img
             className="comment-heart"
@@ -26,4 +25,4 @@ class CurrentHiddenComment extends React.Component {
     ));
   }
 }
-export default CurrentHiddenComment;
+export default HiddenComment;

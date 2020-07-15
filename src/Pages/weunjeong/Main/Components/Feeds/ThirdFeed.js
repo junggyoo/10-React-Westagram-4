@@ -1,7 +1,7 @@
 import React from "react";
 import Emoji from "./Emoji";
 import AddComment from "./AddComment";
-import "./Feeds.scss";
+import ShownComment from "./ShownComment";
 
 class ThirdFeed extends React.Component {
   constructor() {
@@ -10,8 +10,16 @@ class ThirdFeed extends React.Component {
       hidden: true,
       addedComment: "",
       commentToGet: [],
+      shownComment: [
+        {
+          id: 0,
+          user: "linvinkdi",
+          comment: "bucketlist",
+        },
+        { id: 1, user: "briobooob", comment: "🙌" },
+      ],
       showId: false,
-      key: 0,
+      key: 2,
       beatingHeart: false,
     };
   }
@@ -58,12 +66,26 @@ class ThirdFeed extends React.Component {
     this.setState({ commentToGet: result });
   };
 
+  deleteShownComment = (e) => {
+    const shownKey = e.target.parentNode.parentNode.id;
+    const shownResult = this.state.shownComment.filter(
+      (content) => content.id !== Number(shownKey)
+    );
+    this.setState({ shownComment: shownResult });
+  };
+
   likeHeart = () => {
     this.setState({ beatingHeart: !this.state.beatingHeart });
   };
 
   render() {
-    const { beatingHeart } = this.state;
+    const {
+      addedComment,
+      commentToGet,
+      shownComment,
+      beatingHeart,
+      showId,
+    } = this.state;
     const activatePost = this.state.addedComment.length !== 0;
     return (
       <article className="article">
@@ -164,50 +186,15 @@ class ThirdFeed extends React.Component {
           </span>
           <span className="comment-blue">@giveusthisdane</span>
           <div className="shown-comment">
-            <div className="comment-line">
-              <div className="line-left">
-                <span className="comment-id">briobooob</span>
-                <span className="comment-content">
-                  &nbsp;&nbsp;
-                  <Emoji symbol="🙌" />
-                </span>
-              </div>
-              <div className="line-right">
-                <img
-                  className="comment-delete"
-                  alt="deleteImg"
-                  src="images/weunjeong/close-button.png"
-                />
-                <img
-                  className="comment-heart"
-                  alt="heartImg"
-                  src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
-                />
-              </div>
-            </div>
-            <div className="comment-line">
-              <div className="line-left">
-                <span className="comment-id">linvinkdi</span>
-                <span className="comment-content">&nbsp;&nbsp;bucketlist</span>
-              </div>
-              <div className="line-right">
-                <img
-                  className="comment-delete"
-                  alt="deleteImg"
-                  src="images/weunjeong/close-button.png"
-                />
-                <img
-                  className="comment-heart"
-                  alt="heartImg"
-                  src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
-                />
-              </div>
-            </div>
+            <ShownComment
+              shownComment={shownComment}
+              deleteShownComment={this.deleteShownComment}
+            />
           </div>
           <AddComment
             deleteComment={this.deleteComment}
-            commentToGet={this.state.commentToGet}
-            myId={this.state.showId}
+            commentToGet={commentToGet}
+            myId={showId}
           />
         </div>
         <div className="write-comment">
@@ -216,7 +203,7 @@ class ThirdFeed extends React.Component {
             type="text"
             placeholder="Add a comment..."
             onChange={this.handleComment}
-            value={this.state.addedComment}
+            value={addedComment}
             onKeyUp={this.pressKeyToPost}
           />
           <button

@@ -1,7 +1,8 @@
 import React from "react";
 import Emoji from "./Emoji";
 import AddComment from "./AddComment";
-import "./Feeds.scss";
+import HiddenComment from "./HiddenComment";
+import ShownComment from "./ShownComment";
 
 class SecondFeed extends React.Component {
   constructor() {
@@ -10,8 +11,20 @@ class SecondFeed extends React.Component {
       hidden: true,
       addedComment: "",
       commentToGet: [],
+      hiddenComment: [
+        { id: 0, user: "beatrice", comment: "OMG 😍😍😍" },
+        { id: 1, user: "brufes", comment: "where is it?" },
+      ],
+      shownComment: [
+        {
+          id: 2,
+          user: "flavio",
+          comment: "take me there 🙌",
+        },
+        { id: 3, user: "imkhong", comment: "nice render" },
+      ],
       showId: false,
-      key: 0,
+      key: 4,
       beatingHeart: false,
     };
   }
@@ -58,12 +71,36 @@ class SecondFeed extends React.Component {
     this.setState({ commentToGet: result });
   };
 
+  deleteHiddenComment = (e) => {
+    const currentKey = e.target.parentNode.parentNode.id;
+    const currentResult = this.state.hiddenComment.filter(
+      (content) => content.id !== Number(currentKey)
+    );
+    this.setState({ hiddenComment: currentResult });
+  };
+
+  deleteShownComment = (e) => {
+    const shownKey = e.target.parentNode.parentNode.id;
+    const shownResult = this.state.shownComment.filter(
+      (content) => content.id !== Number(shownKey)
+    );
+    this.setState({ shownComment: shownResult });
+  };
+
   likeHeart = () => {
     this.setState({ beatingHeart: !this.state.beatingHeart });
   };
 
   render() {
-    const { beatingHeart } = this.state;
+    const {
+      hidden,
+      addedComment,
+      commentToGet,
+      hiddenComment,
+      shownComment,
+      beatingHeart,
+      showId,
+    } = this.state;
     const activatePost = this.state.addedComment.length !== 0;
     return (
       <article className="article">
@@ -171,103 +208,27 @@ class SecondFeed extends React.Component {
             June 2020
           </span>
           <br />
-          <button className="footer-btn" onClick={this.showComments}>
-            {this.state.hidden ? "View 2 more comments" : "Hide comments"}
-          </button>
-          <br />
-          <div
-            className={
-              this.state.hidden ? "hidden-comment" : "show-hidden-comment"
-            }
-          >
-            <div className="comment-line">
-              <div className="line-left">
-                <span className="comment-id">beatrice</span>
-                <span className="comment-content">
-                  &nbsp;&nbsp;OMG
-                  <Emoji symbol="😍" />
-                  <Emoji symbol="😍" />
-                  <Emoji symbol="😍" />
-                </span>
-              </div>
-              <div className="line-right">
-                <img
-                  className="comment-delete"
-                  alt="deleteImg"
-                  src="images/weunjeong/close-button.png"
-                />
-                <img
-                  className="comment-heart"
-                  alt="heartImg"
-                  src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
-                />
-              </div>
-            </div>
-            <div className="comment-line">
-              <div className="line-left">
-                <span className="comment-id">brufes</span>
-                <span className="comment-content">
-                  &nbsp;&nbsp;where is it?
-                </span>
-              </div>
-              <div className="line-right">
-                <img
-                  className="comment-delete"
-                  alt="deleteImg"
-                  src="images/weunjeong/close-button.png"
-                />
-                <img
-                  className="comment-heart"
-                  alt="heartImg"
-                  src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
-                />
-              </div>
-            </div>
+          {(hiddenComment.length > 0 || shownComment.length > 0) && (
+            <button className="footer-btn" onClick={this.showComments}>
+              {hidden ? "View more comments" : "Hide comments"}
+            </button>
+          )}
+          <div className={hidden ? "hidden-comment" : "show-hidden-comment"}>
+            <HiddenComment
+              hiddenComment={hiddenComment}
+              deleteHiddenComment={this.deleteHiddenComment}
+            />
           </div>
           <div className="shown-comment">
-            <div className="comment-line">
-              <div className="line-left">
-                <span className="comment-id">flavio</span>
-                <span className="comment-content">
-                  &nbsp;&nbsp;take me there <Emoji symbol="🙌" />
-                </span>
-              </div>
-              <div className="line-right">
-                <img
-                  className="comment-delete"
-                  alt="deleteImg"
-                  src="images/weunjeong/close-button.png"
-                />
-                <img
-                  className="comment-heart"
-                  alt="heartImg"
-                  src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
-                />
-              </div>
-            </div>
-            <div className="comment-line">
-              <div className="line-left">
-                <span className="comment-id">imkhong</span>
-                <span className="comment-content">&nbsp;&nbsp;nice render</span>
-              </div>
-              <div className="line-right">
-                <img
-                  className="comment-delete"
-                  alt="deleteImg"
-                  src="images/weunjeong/close-button.png"
-                />
-                <img
-                  className="comment-heart"
-                  alt="heartImg"
-                  src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
-                />
-              </div>
-            </div>
+            <ShownComment
+              shownComment={shownComment}
+              deleteShownComment={this.deleteShownComment}
+            />
           </div>
           <AddComment
             deleteComment={this.deleteComment}
-            commentToGet={this.state.commentToGet}
-            myId={this.state.showId}
+            commentToGet={commentToGet}
+            myId={showId}
           />
         </div>
         <div className="write-comment">
@@ -276,7 +237,7 @@ class SecondFeed extends React.Component {
             type="text"
             placeholder="Add a comment..."
             onChange={this.handleComment}
-            value={this.state.addedComment}
+            value={addedComment}
             onKeyUp={this.pressKeyToPost}
           />
           <button
