@@ -33,10 +33,29 @@ class Login extends React.Component {
     }
   };
 
-  goToMain = () => {
-    if (this.state.isIdValid) {
-      this.props.history.push("/main-hyeonji");
-    }
+  goToMain = (e) => {
+    // e.preventDefault();
+    // if (this.state.isIdValid) {
+    //   this.props.history.push("/main-hyeonji");
+    // }
+
+    fetch("http://10.58.0.219:8000/user/sign-in", {
+      method: "POST",
+      body: JSON.stringify({
+        email: this.state.id,
+        password: this.state.password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.access_token) {
+          localStorage.setItem("access_token", res.access_token);
+          alert("성공입니다");
+          this.props.history.push("/main-hyeonji");
+        } else {
+          alert(res.message);
+        }
+      });
   };
 
   render() {

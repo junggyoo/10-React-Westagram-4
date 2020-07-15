@@ -37,106 +37,8 @@
     }
   }
 
-  .side-recommend {
-    width: 325px;
-    height: 301px;
-    margin: 0 0 12px -16px;
-
-    .top {
-      width: 325px;
-      height: 19px;
-      padding: 4px 0;
-      display: flex;
-      align-items: center;
-    }
-
-    .text-left {
-      width: 248.08px;
-      height: 18px;
-      font-size: 14px;
-      color: grey;
-    }
-
-    .text-right {
-      width: 44.92px;
-      height: 14px;
-      font-size: 12px;
-      color: black;
-    }
-
-    .padding-side-group {
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-
-    .padding-top-bottom-8px {
-      padding-bottom: 8px;
-      padding-top: 8px;
-    }
-
-    .list-wrap {
-      width: 325px;
-    }
-
-    .list-container {
-      height: 250px;
-    }
-
-    .area-label {
-      width: 294px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .label-left img {
-      width: 32px;
-      height: 32px;
-      border-radius: 100%;
-      border: solid 0.5px grey;
-    }
-
-    .friend-img-box {
-      width: 32px;
-      height: 32px;
-      margin-right: 12px;
-    }
-
-    .label-center {
-      width: 205.86px;
-      height: 28px;
-    }
-
-    .friend-id {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      color: black;
-      font-size: 14px;
-    }
-
-    .friend-info {
-      color: grey;
-    }
-
-    .friend-info {
-      width: 205.86px;
-      margin-top: 8px;
-      font-size: 13px;
-    }
-
-    .label-right {
-      width: 31.14px;
-    }
-
-    .follow {
-      width: 31.14px;
-      font-size: 12px;
-      color: #4eb3f8;
-    }
-  }
-
   .side-underInfo {
+    padding-top: 20px;
     font-size: 11px;
     color: grey;
 
@@ -158,6 +60,10 @@
       li:last-child::after {
         content: "";
       }
+    }
+
+    .copyright {
+      padding-top: 20px;
     }
   }
 }

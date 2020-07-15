@@ -1,6 +1,7 @@
 import React from "react";
+import "./Comment.scss";
 
-class CommentBox extends React.Component {
+class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,12 +14,12 @@ class CommentBox extends React.Component {
   };
 
   render() {
-    const { hideComment, index, comment, deleteComment, num, id } = this.props;
+    const { hideComment, comment, deleteComment, num, id } = this.props;
     return (
-      <div>
+      <div className="Comment">
         <div
           className={
-            hideComment && index >= 2 ? "each-comment-hide" : "each-comment"
+            hideComment && num >= 2 ? "each-comment-hide" : "each-comment"
           }
         >
           <span className="comment-id">{id}</span> <span>{comment}</span>
@@ -46,4 +47,4 @@ class CommentBox extends React.Component {
   }
 }
 
-export default CommentBox;
+export default Comment;

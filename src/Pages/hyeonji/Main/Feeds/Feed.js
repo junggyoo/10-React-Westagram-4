@@ -1,6 +1,5 @@
 import React from "react";
-import "./StoryItem.scss";
-import CommentContainer from "./CommentContainer";
+import CommentBox from "./Comment/CommentBox";
 
 class Feed extends React.Component {
   constructor(props) {
@@ -89,7 +88,7 @@ class Feed extends React.Component {
                 </div>
               </div>
 
-              <CommentContainer />
+              <CommentBox />
             </div>
           </div>
         </div>

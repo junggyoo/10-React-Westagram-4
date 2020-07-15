@@ -1,6 +1,6 @@
 import React from "react";
 import "./Feeds.scss";
-import Stories from "./Stories";
+import Stories from "./Story/Stories";
 import Feed from "./Feed";
 
 class Feeds extends React.Component {

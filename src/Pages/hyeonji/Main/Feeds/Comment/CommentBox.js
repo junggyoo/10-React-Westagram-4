@@ -1,7 +1,8 @@
 import React from "react";
-import CommentBox from "./CommentBox";
+import Comment from "./Comment";
+import "./CommentBox.scss";
 
-class CommentContainer extends React.Component {
+class CommentBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +21,8 @@ class CommentContainer extends React.Component {
 
   //comments배열의 길이가 2 이상이면 댓글 숨기기 & 모두 보기 생성을 제어하는 hideCommentState를 true로 변경
   handleHideComment = () => {
-    if (this.state.comments.length > 2) {
+    const { comments } = this.state;
+    if (comments.length > 2) {
       this.setState({ hideCommentState: true });
     }
   };
@@ -61,12 +63,11 @@ class CommentContainer extends React.Component {
         <div className="comments">
           {this.state.comments.map((comment, i) => {
             return (
-              <CommentBox
-                key={i}
+              <Comment
+                key={comment.num}
                 id={this.state.id}
                 comment={comment.comment}
                 num={comment.num}
-                index={i}
                 hideComment={this.state.hideCommentState}
                 deleteComment={this.deleteComment}
               />
@@ -89,19 +90,15 @@ class CommentContainer extends React.Component {
           <span>11시간 전</span>
         </div>
         <div className="comment-input">
-          <form id="submit-comment-container">
+          <form>
             <input
-              id="submit"
+              className="submit"
               type="text"
               placeholder="댓글 달기..."
               value={this.state.inputCommentValue}
               onChange={this.handleCommentInput}
             />
-            <input
-              type="submit"
-              value="게시"
-              onClick={this.handleCreateNewArr}
-            />
+            <button onClick={this.handleCreateNewArr}>게시</button>
           </form>
         </div>
       </div>
@@ -109,4 +106,4 @@ class CommentContainer extends React.Component {
   }
 }
 
-export default CommentContainer;
+export default CommentBox;
