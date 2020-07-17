@@ -9,6 +9,8 @@ class BH_Login extends Component {
     this.state = {
       id: "",
       pw: "",
+      userId: "bhooncoding@gmail.com",
+      userPw: "12341234",
     };
   }
   // 이해를 못함..
@@ -36,8 +38,23 @@ class BH_Login extends Component {
     this.goToMain();
   };
 
-  goToMain = () => {
+  goToMain = (e) => {
     this.props.history.push("/main-byeonghoon");
+    e.preventDefault();
+    // this.props.history.push("/main-byeonghoon");
+    fetch("http://10.58.5.147:8000/user/sign-up", {
+      method: "POST",
+      body: JSON.stringify({
+        email: this.state.id,
+        password: this.state.pw,
+      }),
+    })
+      .then((res) => res.json())
+      // .then((res) => console.log(res));
+      .then((res) => sessionStorage.setItem("token", res.token));
+    if (sessionStorage.getItem("token")) {
+      this.props.history.push("/main-byeonghoon");
+    }
   };
 
   handleEnter = (e) => {
@@ -47,7 +64,6 @@ class BH_Login extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="BH_Login">
         <main className="BH_main">
@@ -80,7 +96,7 @@ class BH_Login extends Component {
                     ? "button2"
                     : "button"
                 }
-                onClick={this.showValue}
+                onClick={this.goToMain}
               >
                 로그인
               </button>

@@ -2,6 +2,36 @@ import React, { Component } from "react";
 import "./MainCenter.scss";
 
 class MainCenter extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      reply: "",
+      replyArr: [], // '게시'button 클릭시 input값을 여기로보냄
+      key: 0,
+    };
+  }
+
+  inputReply = (e) => {
+    this.setState({
+      reply: e.target.value,
+    });
+  };
+
+  posting = (e) => {
+    e.preventDefault();
+    this.setState({
+      // replyArr: [...this.state.replyArr, this.state.reply],
+      reply: "",
+      key: this.state.key + 1,
+    });
+
+    const test = { id: this.state.key, comment: this.state.reply };
+    this.state.replyArr.push(test);
+
+    console.log(this.state.replyArr);
+  };
+
   render() {
     return (
       <section className="MainCenter">
@@ -245,6 +275,9 @@ class MainCenter extends Component {
                   <span className="more_comment">...더 보기</span>
                 </div>
               </div>
+              {this.state.replyArr.map((e) => {
+                return <p>{e.comment}</p>;
+              })}
               <div className="div_time_ago">
                 <time>7시간 전</time>
               </div>
@@ -252,11 +285,16 @@ class MainCenter extends Component {
             <section className="section_comment">
               <div className="div_comment">
                 <form className="form_comment">
-                  <textarea
+                  <input
                     className="input_comment"
+                    type="text"
+                    onChange={this.inputReply}
                     placeholder="댓글 달기..."
-                  ></textarea>
-                  <button className="button_upload_comment" type="submit">
+                  ></input>
+                  <button
+                    className="button_upload_comment"
+                    onClick={(e) => this.posting(e)}
+                  >
                     게시
                   </button>
                 </form>

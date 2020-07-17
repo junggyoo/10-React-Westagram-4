@@ -141,7 +141,6 @@
         display: flex;
         flex-direction: column;
         width: 614px;
-        height: 155px;
         border-top: solid 1px #dbdbdb;
 
         .wrap_like_msg_icons {
@@ -290,7 +289,7 @@
             align-items: center;
             flex-direction: row;
 
-            textarea {
+            input {
               display: flex;
               flex-grow: 1;
               outline: 0;
@@ -305,7 +304,6 @@
             button {
               position: relative;
               opacity: 0.3;
-              pointer-events: none;
               color: rgba(var(--d69, 0, 149, 246), 1);
               border: 0;
               padding: 0;
