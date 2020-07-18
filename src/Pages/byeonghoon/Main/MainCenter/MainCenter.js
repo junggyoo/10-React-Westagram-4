@@ -1,17 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
+import Comment from "../Comment/Comment";
 import "./MainCenter.scss";
 
-class MainCenter extends Component {
+class MainCenter extends React.Component {
   constructor() {
     super();
 
     this.state = {
       reply: "",
-      replyArr: [], // '게시'button 클릭시 input값을 여기로보냄
-      key: 0,
+      replyArr: [],
     };
   }
-
   inputReply = (e) => {
     this.setState({
       reply: e.target.value,
@@ -21,18 +20,20 @@ class MainCenter extends Component {
   posting = (e) => {
     e.preventDefault();
     this.setState({
-      // replyArr: [...this.state.replyArr, this.state.reply],
-      reply: "",
-      key: this.state.key + 1,
+      replyArr: [...this.state.replyArr, this.state.reply],
     });
-
-    const test = { id: this.state.key, comment: this.state.reply };
-    this.state.replyArr.push(test);
-
-    console.log(this.state.replyArr);
   };
 
+  //     // reply: "",
+  //     // key: this.state.key + 1,
+  //   });
+
+  //   // const test = { id: this.state.key, comment: this.state.reply };
+  //   // this.state.replyArr.push(test);
+  // };
+
   render() {
+    console.log(this.state.reply);
     return (
       <section className="MainCenter">
         <div className="wrap_story_feeds">
@@ -275,8 +276,9 @@ class MainCenter extends Component {
                   <span className="more_comment">...더 보기</span>
                 </div>
               </div>
-              {this.state.replyArr.map((e) => {
-                return <p>{e.comment}</p>;
+
+              {this.state.replyArr.map((text) => {
+                return <Comment comment={text} />;
               })}
               <div className="div_time_ago">
                 <time>7시간 전</time>
@@ -293,7 +295,7 @@ class MainCenter extends Component {
                   ></input>
                   <button
                     className="button_upload_comment"
-                    onClick={(e) => this.posting(e)}
+                    onClick={this.posting}
                   >
                     게시
                   </button>

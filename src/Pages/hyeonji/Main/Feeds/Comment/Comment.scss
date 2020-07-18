@@ -1,0 +1,39 @@
+.Comment {
+  .each-comment {
+    width: 582px;
+    height: 18px;
+    padding: 11px 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .each-comment-hide {
+    width: 582px;
+    height: 18px;
+    padding: 11px 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    display: none;
+  }
+
+  .comment-id,
+  .content-id {
+    font-weight: bold;
+    padding-right: 5px;
+  }
+
+  .like-heart {
+    position: absolute;
+    right: 0;
+  }
+
+  .submit-x {
+    width: 15px;
+  }
+
+  .submit-heart {
+    width: 15px;
+  }
+}

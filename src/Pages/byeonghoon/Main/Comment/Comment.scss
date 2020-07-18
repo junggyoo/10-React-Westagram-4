@@ -1,0 +1,56 @@
+.div_wrap_screen_comment {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0px 16px;
+  flex: 0 0 auto;
+  width: 582px;
+  height: 40px;
+
+  div {
+    margin-bottom: 4px;
+    width: 582px;
+    height: 36px;
+
+    .span_comment_id {
+      display: inline;
+      position: relative;
+
+      a {
+        font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-left: 5px;
+        margin-left: -5px;
+        margin-right: 10px;
+        text-decoration: none;
+        color: rgba(var(--f75, 38, 38, 38), 1);
+      }
+    }
+
+    .screen_comment {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font: inherit;
+      vertical-align: baseline;
+    }
+
+    .more_comment {
+      font-size: 13px;
+      font-weight: 600;
+    }
+  }
+}
+
+.div_time_ago {
+  display: block;
+  padding-left: 16px;
+  margin-bottom: 4px;
+
+  time {
+    font-size: 10px;
+    font-weight: 400;
+    color: rgb(142, 142, 142);
+    letter-spacing: 0.2px;
+  }
+}

@@ -65,18 +65,16 @@
 
     article {
       max-width: 614px;
-      max-height: 831px;
       width: 614px;
-      height: 847px;
-      border: solid 1px #dbdbdb;
       border-bottom: none;
+
       border-radius: 3px;
       margin-bottom: 60px;
       background-color: white;
 
       header {
         display: flex;
-        flex-direction: col;
+
         align-items: center;
         margin: 18px;
         padding: 8px;
@@ -128,6 +126,7 @@
         height: 614px;
         max-width: 612px;
         max-height: 614px;
+        border-top: solid 1px #dbdbdb;
 
         img {
           width: 611px;
@@ -269,7 +268,7 @@
             letter-spacing: 0.2px;
           }
         }
-      }
+      } //border box
 
       .section_comment {
         display: flex;
@@ -277,7 +276,9 @@
         width: 612px;
         height: 55px;
         padding: 0px 16px;
-        border: solid 1px #dbdbdb;
+        border-top: solid 1px #dbdbdb;
+        border-bottom: solid 1px #dbdbdb;
+        border-right: solid 1px #dbdbdb;
         background-color: white;
 
         div {
